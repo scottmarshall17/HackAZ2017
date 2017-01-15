@@ -31,7 +31,8 @@ mongoose.connect(m_mongoURL);
 passport.use(new FacebookStrategy({
     clientID: m_clientID,
     clientSecret: m_clientSecret,
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'
+    callbackURL: 'http://www.vocabulagent.me:8080/auth/facebook/callback',
+    enableProof: true
     },
     function (accessToken, refreshToken, profile, done) {
         console.log(profile);
@@ -40,7 +41,7 @@ passport.use(new FacebookStrategy({
                 console.log('User found!');
                 console.log(profile._json.name.split(' ')[0]);
                 console.log(profile._json.name.split(' ')[1]);
-                return done(null, existingUser);
+                return done(null, existingUser);	//return?
             }
             var user = new User({
                 facebook: profile.id,
@@ -73,7 +74,7 @@ passport.deserializeUser(function (id, done) {
 
 var app = express();
 
-app.set('port', 3000);
+app.set('port', 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 /*
@@ -94,8 +95,8 @@ app.use(passport.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 */
-app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/'}));
+app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/', function (req, res) {
     res.render('index', {
