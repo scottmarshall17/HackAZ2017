@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container
+    .panel
+      .panel-heading Facebook Profile
+      .panel-body
+        dl
+          dt Facebook ID
+          dd= user.facebook
+          dt Profile URL
+          dd= user.profileUrl
+          dt Full Name
+          dd #{user.firstName} #{user.lastName}
+          dt Gender
+          dd= user.gender

@@ -1,0 +1,28 @@
+{
+  "name": "fbauthentication",
+  "version": "1.0.0",
+  "description": "A simple test application using facebook to authenticate users",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "facebook",
+    "authentication"
+  ],
+  "author": "Scott Marshall",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-json": "^1.0.0",
+    "express-session": "^1.14.2",
+    "mongodb": "^2.2.21",
+    "mongoose": "^4.7.6",
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-beta6"
+  }
+}
