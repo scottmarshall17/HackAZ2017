@@ -31,7 +31,7 @@ mongoose.connect(m_mongoURL);
 passport.use(new FacebookStrategy({
     clientID: m_clientID,
     clientSecret: m_clientSecret,
-    callbackURL: 'http://www.vocabulagent.me:8080/auth/facebook/callback',
+    callbackURL: 'http://www.vocabulagent.me/auth/facebook/callback',
     enableProof: true
     },
     function (accessToken, refreshToken, profile, done) {
@@ -93,8 +93,9 @@ app.use(passport.session());
 // ...
 /*
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 */
+app.use(express.static(path.join(__dirname, 'stylesheets')));
+
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/'}));
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
